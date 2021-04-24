@@ -1,0 +1,509 @@
+{
+  "configuration": {
+    "jobType": "QUERY",
+    "query": {
+      "allowLargeResults": false,
+      "destinationTable": {
+        "datasetId": "_8223ed7cdb79467802d9bdc1f4fee96b318f90d8",
+        "projectId": "example-dev-284123",
+        "tableId": "anon5d04811cc7bcb469a5546fe37fb385cf8436ae06"
+      },
+      "priority": "INTERACTIVE",
+      "query": "with cte as (\nSELECT /* tst2 cte_query */ b.* \nFROM `example-prod-284123.dataset01.table01` a\ninner join `example-dev-284123.dataset01.table01` b\non a.col1 = b.col1\n)\nSELECT /* now3 main_query */ b.* \nFROM `example-prod-284123.dataset01.table01` a\ninner join `example-dev-284123.dataset01.table01` b\non a.col1 = b.col1\ninner join cte\non a.col1 = cte.col1\ninner join (SELECT /* subquery */ b.* \nFROM `example-prod-284123.dataset01.table01` a\ninner join `example-dev-284123.dataset01.table01` b\non a.col1 = b.col1) sq\non a.col1 = sq.col1",
+      "useLegacySql": false,
+      "useQueryCache": true,
+      "writeDisposition": "WRITE_TRUNCATE"
+    }
+  },
+  "etag": "rSLIe1iGuQufoH5zfRNnTw==",
+  "id": "example-dev-284123:US.bquxjob_27d580de_17387a47aff",
+  "jobReference": {
+    "jobId": "bquxjob_27d580de_17387a47aff",
+    "location": "US",
+    "projectId": "example-dev-284123"
+  },
+  "kind": "bigquery#job",
+  "selfLink": "https://bigquery.googleapis.com/bigquery/v2/projects/example-dev-284123/jobs/bquxjob_27d580de_17387a47aff?location=US",
+  "statistics": {
+    "creationTime": "1595773561247",
+    "endTime": "1595773562233",
+    "query": {
+      "billingTier": 1,
+      "cacheHit": false,
+      "estimatedBytesProcessed": "36",
+      "queryPlan": [
+        {
+          "completedParallelInputs": "1",
+          "computeMsAvg": "5",
+          "computeMsMax": "5",
+          "computeRatioAvg": 0.08064516129032258,
+          "computeRatioMax": 0.08064516129032258,
+          "endMs": "1595773561749",
+          "id": "1",
+          "name": "S01: Input",
+          "parallelInputs": "1",
+          "readMsAvg": "42",
+          "readMsMax": "42",
+          "readRatioAvg": 0.6774193548387096,
+          "readRatioMax": 0.6774193548387096,
+          "recordsRead": "3",
+          "recordsWritten": "3",
+          "shuffleOutputBytes": "18",
+          "shuffleOutputBytesSpilled": "0",
+          "slotMs": "54",
+          "startMs": "1595773561694",
+          "status": "COMPLETE",
+          "steps": [
+            {
+              "kind": "READ",
+              "substeps": [
+                "$1:col1",
+                "FROM example-prod-284123.dataset01.table01"
+              ]
+            },
+            {
+              "kind": "WRITE",
+              "substeps": [
+                "$1",
+                "TO __stage01_output",
+                "BY HASH($1)"
+              ]
+            }
+          ],
+          "waitMsAvg": "13",
+          "waitMsMax": "13",
+          "waitRatioAvg": 0.20967741935483872,
+          "waitRatioMax": 0.20967741935483872,
+          "writeMsAvg": "4",
+          "writeMsMax": "4",
+          "writeRatioAvg": 0.06451612903225806,
+          "writeRatioMax": 0.06451612903225806
+        },
+        {
+          "completedParallelInputs": "1",
+          "computeMsAvg": "8",
+          "computeMsMax": "8",
+          "computeRatioAvg": 0.12903225806451613,
+          "computeRatioMax": 0.12903225806451613,
+          "endMs": "1595773561868",
+          "id": "2",
+          "name": "S02: Input",
+          "parallelInputs": "1",
+          "readMsAvg": "7",
+          "readMsMax": "7",
+          "readRatioAvg": 0.11290322580645161,
+          "readRatioMax": 0.11290322580645161,
+          "recordsRead": "3",
+          "recordsWritten": "3",
+          "shuffleOutputBytes": "18",
+          "shuffleOutputBytesSpilled": "0",
+          "slotMs": "452",
+          "startMs": "1595773561738",
+          "status": "COMPLETE",
+          "steps": [
+            {
+              "kind": "READ",
+              "substeps": [
+                "$50:col1",
+                "FROM example-dev-284123.dataset01.table01"
+              ]
+            },
+            {
+              "kind": "WRITE",
+              "substeps": [
+                "$50",
+                "TO __stage02_output",
+                "BY HASH($50)"
+              ]
+            }
+          ],
+          "waitMsAvg": "41",
+          "waitMsMax": "41",
+          "waitRatioAvg": 0.6612903225806451,
+          "waitRatioMax": 0.6612903225806451,
+          "writeMsAvg": "62",
+          "writeMsMax": "62",
+          "writeRatioAvg": 1,
+          "writeRatioMax": 1
+        },
+        {
+          "completedParallelInputs": "1",
+          "computeMsAvg": "6",
+          "computeMsMax": "6",
+          "computeRatioAvg": 0.0967741935483871,
+          "computeRatioMax": 0.0967741935483871,
+          "endMs": "1595773561829",
+          "id": "4",
+          "name": "S04: Input",
+          "parallelInputs": "1",
+          "readMsAvg": "4",
+          "readMsMax": "4",
+          "readRatioAvg": 0.06451612903225806,
+          "readRatioMax": 0.06451612903225806,
+          "recordsRead": "3",
+          "recordsWritten": "3",
+          "shuffleOutputBytes": "54",
+          "shuffleOutputBytesSpilled": "0",
+          "slotMs": "65",
+          "startMs": "1595773561759",
+          "status": "COMPLETE",
+          "steps": [
+            {
+              "kind": "READ",
+              "substeps": [
+                "$30:col1, $31:col2, $32:col3",
+                "FROM example-dev-284123.dataset01.table01"
+              ]
+            },
+            {
+              "kind": "WRITE",
+              "substeps": [
+                "$30, $31, $32",
+                "TO __stage04_output",
+                "BY HASH($30)"
+              ]
+            }
+          ],
+          "waitMsAvg": "33",
+          "waitMsMax": "33",
+          "waitRatioAvg": 0.532258064516129,
+          "waitRatioMax": 0.532258064516129,
+          "writeMsAvg": "18",
+          "writeMsMax": "18",
+          "writeRatioAvg": 0.2903225806451613,
+          "writeRatioMax": 0.2903225806451613
+        },
+        {
+          "completedParallelInputs": "1",
+          "computeMsAvg": "8",
+          "computeMsMax": "8",
+          "computeRatioAvg": 0.12903225806451613,
+          "computeRatioMax": 0.12903225806451613,
+          "endMs": "1595773561853",
+          "id": "6",
+          "inputStages": [
+            "1"
+          ],
+          "name": "S06: Join",
+          "parallelInputs": "1",
+          "readMsAvg": "6",
+          "readMsMax": "6",
+          "readRatioAvg": 0.0967741935483871,
+          "readRatioMax": 0.0967741935483871,
+          "recordsRead": "6",
+          "recordsWritten": "3",
+          "shuffleOutputBytes": "18",
+          "shuffleOutputBytesSpilled": "0",
+          "slotMs": "155",
+          "startMs": "1595773561782",
+          "status": "COMPLETE",
+          "steps": [
+            {
+              "kind": "READ",
+              "substeps": [
+                "$10:col1",
+                "FROM example-dev-284123.dataset01.table01"
+              ]
+            },
+            {
+              "kind": "READ",
+              "substeps": [
+                "$1",
+                "FROM __stage01_output"
+              ]
+            },
+            {
+              "kind": "JOIN",
+              "substeps": [
+                "INNER HASH JOIN EACH  WITH ALL  ON $10 = $1"
+              ]
+            },
+            {
+              "kind": "WRITE",
+              "substeps": [
+                "$90",
+                "TO __stage06_output",
+                "BY HASH($90)"
+              ]
+            }
+          ],
+          "waitMsAvg": "7",
+          "waitMsMax": "7",
+          "waitRatioAvg": 0.11290322580645161,
+          "waitRatioMax": 0.11290322580645161,
+          "writeMsAvg": "9",
+          "writeMsMax": "9",
+          "writeRatioAvg": 0.14516129032258066,
+          "writeRatioMax": 0.14516129032258066
+        },
+        {
+          "completedParallelInputs": "1",
+          "computeMsAvg": "7",
+          "computeMsMax": "7",
+          "computeRatioAvg": 0.11290322580645161,
+          "computeRatioMax": 0.11290322580645161,
+          "endMs": "1595773561892",
+          "id": "7",
+          "inputStages": [
+            "4"
+          ],
+          "name": "S07: Join",
+          "parallelInputs": "1",
+          "readMsAvg": "9",
+          "readMsMax": "9",
+          "readRatioAvg": 0.14516129032258066,
+          "readRatioMax": 0.14516129032258066,
+          "recordsRead": "6",
+          "recordsWritten": "3",
+          "shuffleOutputBytes": "72",
+          "shuffleOutputBytesSpilled": "0",
+          "slotMs": "68",
+          "startMs": "1595773561846",
+          "status": "COMPLETE",
+          "steps": [
+            {
+              "kind": "READ",
+              "substeps": [
+                "$20:col1",
+                "FROM example-prod-284123.dataset01.table01"
+              ]
+            },
+            {
+              "kind": "READ",
+              "substeps": [
+                "$30, $31, $32",
+                "FROM __stage04_output"
+              ]
+            },
+            {
+              "kind": "JOIN",
+              "substeps": [
+                "INNER HASH JOIN EACH  WITH ALL  ON $20 = $30"
+              ]
+            },
+            {
+              "kind": "WRITE",
+              "substeps": [
+                "$60, $61, $62, $63",
+                "TO __stage07_output",
+                "BY HASH($60)"
+              ]
+            }
+          ],
+          "waitMsAvg": "1",
+          "waitMsMax": "1",
+          "waitRatioAvg": 0.016129032258064516,
+          "waitRatioMax": 0.016129032258064516,
+          "writeMsAvg": "10",
+          "writeMsMax": "10",
+          "writeRatioAvg": 0.16129032258064516,
+          "writeRatioMax": 0.16129032258064516
+        },
+        {
+          "completedParallelInputs": "100",
+          "computeMsAvg": "6",
+          "computeMsMax": "8",
+          "computeRatioAvg": 0.0967741935483871,
+          "computeRatioMax": 0.12903225806451613,
+          "endMs": "1595773562008",
+          "id": "9",
+          "inputStages": [
+            "7"
+          ],
+          "name": "S09: Coalesce",
+          "parallelInputs": "100",
+          "readMsAvg": "0",
+          "readMsMax": "0",
+          "readRatioAvg": 0,
+          "readRatioMax": 0,
+          "recordsRead": "3",
+          "recordsWritten": "3",
+          "shuffleOutputBytes": "72",
+          "shuffleOutputBytesSpilled": "0",
+          "slotMs": "18137",
+          "startMs": "1595773561896",
+          "status": "COMPLETE",
+          "steps": [
+            {
+              "kind": "READ",
+              "substeps": [
+                "FROM __stage07_output"
+              ]
+            }
+          ],
+          "waitMsAvg": "1",
+          "waitMsMax": "4",
+          "waitRatioAvg": 0.016129032258064516,
+          "waitRatioMax": 0.06451612903225806,
+          "writeMsAvg": "22",
+          "writeMsMax": "30",
+          "writeRatioAvg": 0.3548387096774194,
+          "writeRatioMax": 0.4838709677419355
+        },
+        {
+          "completedParallelInputs": "100",
+          "computeMsAvg": "5",
+          "computeMsMax": "9",
+          "computeRatioAvg": 0.08064516129032258,
+          "computeRatioMax": 0.14516129032258066,
+          "endMs": "1595773562003",
+          "id": "10",
+          "inputStages": [
+            "6"
+          ],
+          "name": "S0A: Coalesce",
+          "parallelInputs": "100",
+          "readMsAvg": "0",
+          "readMsMax": "0",
+          "readRatioAvg": 0,
+          "readRatioMax": 0,
+          "recordsRead": "3",
+          "recordsWritten": "3",
+          "shuffleOutputBytes": "18",
+          "shuffleOutputBytesSpilled": "0",
+          "slotMs": "17535",
+          "startMs": "1595773561896",
+          "status": "COMPLETE",
+          "steps": [
+            {
+              "kind": "READ",
+              "substeps": [
+                "FROM __stage06_output"
+              ]
+            }
+          ],
+          "waitMsAvg": "3",
+          "waitMsMax": "5",
+          "waitRatioAvg": 0.04838709677419355,
+          "waitRatioMax": 0.08064516129032258,
+          "writeMsAvg": "18",
+          "writeMsMax": "52",
+          "writeRatioAvg": 0.2903225806451613,
+          "writeRatioMax": 0.8387096774193549
+        },
+        {
+          "completedParallelInputs": "1",
+          "computeMsAvg": "13",
+          "computeMsMax": "13",
+          "computeRatioAvg": 0.20967741935483872,
+          "computeRatioMax": 0.20967741935483872,
+          "endMs": "1595773562077",
+          "id": "11",
+          "inputStages": [
+            "10",
+            "2",
+            "9"
+          ],
+          "name": "S0B: Output",
+          "parallelInputs": "1",
+          "readMsAvg": "12",
+          "readMsMax": "12",
+          "readRatioAvg": 0.1935483870967742,
+          "readRatioMax": 0.1935483870967742,
+          "recordsRead": "12",
+          "recordsWritten": "27",
+          "shuffleOutputBytes": "432",
+          "shuffleOutputBytesSpilled": "0",
+          "slotMs": "296",
+          "startMs": "1595773561915",
+          "status": "COMPLETE",
+          "steps": [
+            {
+              "kind": "READ",
+              "substeps": [
+                "$40:col1",
+                "FROM example-prod-284123.dataset01.table01"
+              ]
+            },
+            {
+              "kind": "READ",
+              "substeps": [
+                "$50",
+                "FROM __stage02_output"
+              ]
+            },
+            {
+              "kind": "READ",
+              "substeps": [
+                "$60, $61, $62, $63",
+                "FROM __stage09_output"
+              ]
+            },
+            {
+              "kind": "READ",
+              "substeps": [
+                "$90",
+                "FROM __stage0A_output"
+              ]
+            },
+            {
+              "kind": "JOIN",
+              "substeps": [
+                "INNER HASH JOIN EACH  WITH ALL  ON $80 = $90"
+              ]
+            },
+            {
+              "kind": "JOIN",
+              "substeps": [
+                "INNER HASH JOIN EACH  WITH ALL  ON $70 = $60"
+              ]
+            },
+            {
+              "kind": "JOIN",
+              "substeps": [
+                "INNER HASH JOIN EACH  WITH ALL  ON $40 = $50"
+              ]
+            },
+            {
+              "kind": "WRITE",
+              "substeps": [
+                "$100, $101, $102",
+                "TO __stage0B_output"
+              ]
+            }
+          ],
+          "waitMsAvg": "3",
+          "waitMsMax": "3",
+          "waitRatioAvg": 0.04838709677419355,
+          "waitRatioMax": 0.04838709677419355,
+          "writeMsAvg": "3",
+          "writeMsMax": "3",
+          "writeRatioAvg": 0.04838709677419355,
+          "writeRatioMax": 0.04838709677419355
+        }
+      ],
+      "referencedTables": [
+        {
+          "datasetId": "dataset01",
+          "projectId": "example-dev-284123",
+          "tableId": "table01"
+        },
+        {
+          "datasetId": "dataset01",
+          "projectId": "example-prod-284123",
+          "tableId": "table01"
+        }
+      ],
+      "statementType": "SELECT",
+      "timeline": [
+        {
+          "completedUnits": "206",
+          "elapsedMs": "773",
+          "pendingUnits": "0",
+          "totalSlotMs": "36748"
+        }
+      ],
+      "totalBytesBilled": "20971520",
+      "totalBytesProcessed": "36",
+      "totalPartitionsProcessed": "0",
+      "totalSlotMs": "36748"
+    },
+    "startTime": "1595773561423",
+    "totalBytesProcessed": "36",
+    "totalSlotMs": "36748"
+  },
+  "status": {
+    "state": "DONE"
+  },
+  "user_email": "kristofferson.a.arao@gmail.com"
+}
